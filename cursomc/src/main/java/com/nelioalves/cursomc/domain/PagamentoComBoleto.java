@@ -2,10 +2,13 @@ package com.nelioalves.cursomc.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 import com.nelioalves.cursomc.domain.enuns.EstadoPagamento;
 
+@Entity
 public class PagamentoComBoleto extends Pagamento{
-	
+	private static final long serialVersionUID = 1L; // <- Colocado de maneira diferenciada  nas subclasses.
 	private Date dataVencimento;
 	private Date dataPagemanto;
 	
@@ -20,6 +23,24 @@ public class PagamentoComBoleto extends Pagamento{
 		this.dataPagemanto = dataPagamento;
 		this.dataVencimento = dataVencimento;
 	}
+
+	public Date getDataVencimento() {
+		return dataVencimento;
+	}
+
+	public void setDataVencimento(Date dataVencimento) {
+		this.dataVencimento = dataVencimento;
+	}
+
+	public Date getDataPagemanto() {
+		return dataPagemanto;
+	}
+
+	public void setDataPagemanto(Date dataPagemanto) {
+		this.dataPagemanto = dataPagemanto;
+	}
+	
+	// SubClasses não precisam de hashcode and equal, posto que eles estão na superclasse Pagamentos.
 	
 
 }

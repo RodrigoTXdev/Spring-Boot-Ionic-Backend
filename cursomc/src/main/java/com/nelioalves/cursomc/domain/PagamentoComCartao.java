@@ -1,9 +1,12 @@
 package com.nelioalves.cursomc.domain;
 
+import javax.persistence.Entity;
+
 import com.nelioalves.cursomc.domain.enuns.EstadoPagamento;
 
+@Entity
 public class PagamentoComCartao extends Pagamento {
-	
+	private static final long serialVersionUID = 1L; // <- Colocado de maneira diferenciada  nas subclasses.
 	private Integer numeroDeParcelas;
 	
 	public PagamentoComCartao () {
@@ -17,7 +20,16 @@ public class PagamentoComCartao extends Pagamento {
 		this.numeroDeParcelas=numeroDeParcelas;
 		
 	}
+
+	public Integer getNumeroDeParcelas() {
+		return numeroDeParcelas;
+	}
+
+	public void setNumeroDeParcelas(Integer numeroDeParcelas) {
+		this.numeroDeParcelas = numeroDeParcelas;
+	}
 	
+	// SubClasses não precisam de hashcode and equal, posto que eles estão na superclasse Pagamentos.
 	
 	
 	
