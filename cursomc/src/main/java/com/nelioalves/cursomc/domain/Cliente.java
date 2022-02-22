@@ -36,6 +36,8 @@ public class Cliente implements Serializable{
 	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 	
+	private List<Pedido> pedidos = new ArrayList<>();
+	
 	// método para criar lista de telefones explicado na aula 22.
 	
 	// Anotação utilizada para mapear uma entidade fraca aula 23 3:30.
@@ -110,6 +112,16 @@ public class Cliente implements Serializable{
 
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
+	}
+	
+	
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	@Override
