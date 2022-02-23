@@ -16,7 +16,8 @@ import com.nelioalves.cursomc.domain.enuns.EstadoPagamento;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED) //Mapeamento de superclasse, estratégia de tabela única para paga com cartão  e ´pag com boleto.
-public class Pagamento implements Serializable{
+//o "abstract" foi acrecentado durante o processo de instanciação aula 27 9:31.
+public abstract class Pagamento implements Serializable{   
 	private static final long serialVersionUID = 1L; 
 	
 	//essa entidade precisa ter o mesmo id da entidade Pedidos. 
@@ -24,7 +25,7 @@ public class Pagamento implements Serializable{
 	@Id                      //relacionamento 1 pra 1 . Nessa entidade não entra o generatedvalue.
 	private Integer id;
 	
-	private EstadoPagamento estado;
+	private Integer estado;
 	
 	//Aula 26. video específico de mapeamento OneToOne.
 	@OneToOne
@@ -39,7 +40,7 @@ public class Pagamento implements Serializable{
 	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
 		super();
 		this.id = id;
-		this.estado = estado;
+		this.estado = estado.getCod();
 		this.pedido = pedido;
 	}
 
@@ -50,13 +51,13 @@ public class Pagamento implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	//aula 27 16:21
 	public EstadoPagamento getEstado() {
-		return estado;
+		return EstadoPagamento.toEnum(estado);
 	}
 
 	public void setEstado(EstadoPagamento estado) {
-		this.estado = estado;
+		this.estado = estado.getCod();
 	}
 
 	public Pedido getPedido() {

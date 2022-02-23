@@ -32,18 +32,17 @@ public class Pedido implements Serializable{
 	private Cliente cliente;
 	
 	@ManyToOne
-	@JoinColumn(name="endereco_de_entrega-id")
+	@JoinColumn(name="endereco_de_entrega_id")
 	private Endereco enderecoDeEntrega;
 	
 	public Pedido() {
 		
 	}
 
-	public Pedido(Integer id, Date instante, Pagamento pagamento, Cliente cliente, Endereco enderecoDeEntrega) {
+	public Pedido(Integer id, Date instante, Cliente cliente, Endereco enderecoDeEntrega) {
 		super();
 		this.id = id;
 		this.instante = instante;
-		this.pagamento = pagamento;
 		this.cliente = cliente;
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
