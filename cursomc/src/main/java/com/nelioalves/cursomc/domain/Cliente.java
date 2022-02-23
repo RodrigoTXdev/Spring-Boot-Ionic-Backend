@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nelioalves.cursomc.domain.enuns.TipoCliente;
 
@@ -32,6 +33,7 @@ public class Cliente implements Serializable{
 	//Nesse ponto foi criado uma estratégia para gerar o enum. O TipoCliente foi substituído por "private Integer tipo" explicado na aula 22
 	private Integer tipo;
 	
+	@JsonBackReference
 	@JsonManagedReference
 	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();

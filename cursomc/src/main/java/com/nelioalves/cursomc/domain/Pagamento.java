@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.nelioalves.cursomc.domain.enuns.EstadoPagamento;
 
 @Entity
@@ -28,6 +29,7 @@ public abstract class Pagamento implements Serializable{
 	private Integer estado;
 	
 	//Aula 26. video específico de mapeamento OneToOne.
+	@JsonBackReference
 	@OneToOne
 	@JoinColumn(name="pedido_id")
 	@MapsId                   // para garantir que o id do pagmento seja o mesmo id do pedido.
